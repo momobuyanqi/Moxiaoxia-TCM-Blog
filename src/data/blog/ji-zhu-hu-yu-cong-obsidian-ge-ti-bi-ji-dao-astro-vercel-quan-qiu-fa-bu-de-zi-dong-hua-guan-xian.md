@@ -5,7 +5,7 @@ description: "\U0001F680 技术互喻：从 Obsidian 个体笔记到 Astro+Verce
   - **..."
 draft: false
 featured: false
-pubDatetime: 2026-02-19 13:47:51.499462
+pubDatetime: 2026-02-19 13:49:29.176167
 slug: ji-zhu-hu-yu-cong-obsidian-ge-ti-bi-ji-dao-astro-vercel-quan-qiu-fa-bu-de-zi-dong-hua-guan-xian
 tags:
 - astro
