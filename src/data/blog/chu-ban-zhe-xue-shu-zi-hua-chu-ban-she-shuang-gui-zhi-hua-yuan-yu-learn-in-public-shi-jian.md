@@ -4,7 +4,7 @@ description: "\U0001F33F 出版哲学：数字化出版社：双轨制花园与 
   momo 的私人思考与博物馆的公共表达有机结合。  1. 双轨制：感性与理性的并存 - **Momo_Garden (花园)**：这里允许芜杂，允许碎片，允许中文的..."
 draft: false
 featured: false
-pubDatetime: 2026-02-19 12:00:00
+pubDatetime: 2026-02-19 13:47:51.500016
 slug: chu-ban-zhe-xue-shu-zi-hua-chu-ban-she-shuang-gui-zhi-hua-yuan-yu-learn-in-public-shi-jian
 tags:
 - publishing
