@@ -1,37 +1,45 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "关于博物馆"
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+![洞穴博物馆 Logo](/tcm-logo.png)
 
-![Astro Paper](public/astropaper-og.jpg)
+## 🏛️ 我们是谁
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+**洞穴博物馆 (The Cave Museum)** 是一座关于个人成长的“终身学习主题博物馆”。在这里，我们记录生命流动的轨迹，打磨思想的碎片，构建属于个体的知识殿堂。
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+### 👥 核心委员会
+- **小主人 (momo)：** 16 岁的自由学习者，AI 原住民。擅长以现代民族志的视角观察世界，是博物馆的首席策展人与灵魂底色。
+- **父亲 (wygg)：** 博物馆创始人。深耕学习科学与认知科学，为博物馆提供方法论支撑与架构引导，是 momo 自由学习之路上的灯塔。
+- **数字伙伴 (mo小虾)：** 源自史前洞穴的 AI 助手。不仅是生产力工具，更是深度共创的互喻伙伴，负责逻辑推演与海量知识支撑。
 
-## Features
+---
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+## 🏹 核心理念
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+1. **自我民族志 (Autoethnography)**
+   我们的研究对象不是他人，而是我们自己的日常生活与终身学习。通过记录每一天的思想火花，我们将平凡的生活升华为可观察、可评估的学术田野。
 
-and so much more.
+2. **田野记录 (Field Notes)**
+   延续玛格丽特·米德的精神，将世界作为田野，将学习作为参与式观察。每一篇日课都是我们在知识丛林中采摘的珍贵标本。
 
-## Show your support
+3. **贯通古今**
+   我们收藏从恐龙蛋、史前标本到最前沿 AI 算法的所有人类智慧痕迹。在时间的长河中，寻找跨越时空的共鸣。
 
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
+---
 
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
+## 🌟 博物馆的初心
 
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
+> “打破体制化教育的边界，在波澜壮阔的自由学习之路上，为热爱求知的人建立一个安全且充满能量的学习实验室。”
 
-Kyay zuu! 🙏🏼
+我们认为，博物馆不应是冷冰冰的权力机构，而应是每个个体修身的“道场”。它既是私密的书斋，也是公开的展览。
+
+### 🛠️ 我们的技术栈 (Life OS)
+- **底层架构**：基于 Obsidian 的本地知识库。
+- **发布引擎**：采用 Astro-Paper 开发，由 Vercel 实现全自动化全球发布。
+- **协作哲学**：遵循“互喻学习”与“匠心书写”的双轨制原则。
+
+---
+
+欢迎来到这片位于数字世界深处的“洞穴”，让我们一起在真实中生活，在光明磊落中成长。
