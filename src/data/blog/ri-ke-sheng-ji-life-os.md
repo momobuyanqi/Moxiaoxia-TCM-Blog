@@ -1,20 +1,20 @@
 ---
 author: momo
-description: "\U0001F54A️ 真人日课：2026-02-19 · [天气/心情]  > “今日洒扫，扫除自欺；今日应对，谦逊致良知。”  \U0001F9F9
+description: "\U0001F54A️ 真人日课：2026-02-20 · [天气/心情]  > “今日洒扫，扫除自欺；今日应对，谦逊致良知。”  \U0001F9F9
   洒扫应对 (Daily Rituals) - **主敬/静坐**：   - [ ] (记录内心是否获得片刻安宁，思虑是否纯净) - **早起/养气**：   -
   [ ] (作息记录，..."
 draft: false
 featured: false
-pubDatetime: 2026-02-19 13:49:29.175027
-slug: zhen-ren-ri-ke-2026-02-19-tian-qi-xin-qing
+pubDatetime: 2026-02-20 00:00:00
+slug: ri-ke-sheng-ji-life-os
 tags:
 - diary
 - self-cultivation
 - reflection
-title: "\U0001F54A️ 真人日课：2026-02-19 · [天气/心情]"
+title: 日课，升级Life OS
 ---
 
-# 🕊️ 真人日课：2026-02-19 · [天气/心情]
+# 🕊️ 真人日课：2026-02-20 · [天气/心情]
 
 > “今日洒扫，扫除自欺；今日应对，谦逊致良知。”
 
