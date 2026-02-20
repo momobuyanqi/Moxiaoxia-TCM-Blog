@@ -1,0 +1,249 @@
+---
+author: momo
+description: '#step001 ```bash if command -v openclaw >/dev/null 2>&1; then     echo
+  "OpenClaw 安装成功！"     openclaw --version else     echo "未找到 openclaw 命令，请检查是否已正确...'
+draft: false
+featured: false
+pubDatetime: 2026-02-20 00:00:00
+slug: wo-xuan-ze-agentmo-xing
+tags: []
+title: 我选择Agent模型
+---
+
+#step001
+```bash
+if command -v openclaw >/dev/null 2>&1; then
+    echo "OpenClaw 安装成功！"
+    openclaw --version
+else
+    echo "未找到 openclaw 命令，请检查是否已正确安装并添加到 PATH 中。"
+fi
+```
+# 我选择Agent模型
+为Gemini3 Flash 模式为Planning
+Agent can plan before executing tasks. Use for deep research, 
+complex tasks, or collaborative work
+
+Gemini 3 Flash 规划模式： 智能体在执行任务前具备规划能力。专门用于深度研究、处理复杂任务及协同办公。
+
+# Fast的意思
+Agent will execute tasks directly. Use for simple tasks that can be completed faster
+快速模式：智能体（Agent）将直接执行任务。适用于可以快速完成的简单任务。
+
+反馈结果：
+OpenClaw 安装成功！
+2026.2.9
+
+#step002
+让AI查找openclaw官方技术文档，kimi官方技术文档，找到配置kimi API的正确方法。
+
+kimiAPI在配置的时候比较容易发生错误的是：api_key和base_url还有model等名称经常因为不符合官方技术文档的规范名称。
+而发生错误。再有一个，使用大陆的kimi控制台和国际的kimi控制台，以及使用kimi最新模型kimicode2.5（连续包年会员）参数名称都不一样。
+请注意区分，并全部梳理出来。
+
+AI梳理的结果有较强不可靠性
+又用kimi查找梳理：
+
+我来帮你系统梳理 Kimi API 的配置陷阱，特别是**大陆控制台**、**国际控制台**和**Kimi Code 包年会员**三者的差异。这些都是实战中常见的踩坑点。
+让我再确认一下 Kimi Code 会员的具体 API 端点和模型命名规范：
+基于你之前遇到的 401 报错经历，我为你系统梳理 **Kimi API 配置的三套体系**。这是目前最容易混淆的配置陷阱，特别是 **Kimi Code 包年会员**与**标准开放平台**的 Key 是**不互通**的。
+
+---
+
+## 一、三套体系的参数对照表
+
+| 配置项 | 大陆标准版<br>`platform.moonshot.cn` | 国际版<br>`platform.moonshot.ai` | Kimi Code 包年会员<br>`kimi.com/code` |
+|--------|-------------------------------------|----------------------------------|---------------------------------------|
+| **控制台地址** | platform.moonshot.cn/console | platform.moonshot.ai/console | www.kimi.com/code/console |
+| **Base URL** | `https://api.moonshot.cn/v1` | `https://api.moonshot.ai/v1` | **Anthropic 兼容**: `https://api.kimi.com/coding/` 或 `https://api.moonshot.cn/anthropic`<br>**OpenAI 兼容**: `https://api.kimi.com/coding/v1` |
+| **API Key 获取** | 「API Keys」页面创建 | 「API Keys」页面创建 | 「会员中心」→「API 密钥」<br>Key 通常以 `sk-kimi-` 开头 |
+| **认证头** | `Authorization: Bearer sk-...` | `Authorization: Bearer sk-...` | **Claude Code 模式**: `ANTHROPIC_API_KEY` 或 `ANTHROPIC_AUTH_TOKEN`<br>**标准模式**: `Authorization: Bearer sk-kimi-...` |
+| **Model 名称** | `kimi-k2-turbo-preview`<br>`kimi-k2-thinking-turbo`<br>`moonshot-v1-8k` | `kimi-k2.5`<br>`kimi-k2-0905-preview`<br>`kimi-k2-thinking` | `kimi-for-coding`<br>`kimi-k2-thinking-turbo`<br>`kimi-k2-thinking` |
+
+---
+
+## 二、高频错误点详解
+
+### 1. Base URL 的区域锁定（401 主因）
+**最大陷阱**：`.cn` 的 Key 与 `.ai` 的端点**完全不互通**。
+
+```bash
+# 错误示例：用大陆 Key 访问国际端点
+curl https://api.moonshot.ai/v1/chat/completions \
+  -H "Authorization: Bearer sk-来自.cn的Key"  # → 401 Invalid Authentication
+
+# 正确示例：大陆 Key 必须配大陆端点
+curl https://api.moonshot.cn/v1/chat/completions \
+  -H "Authorization: Bearer sk-来自.cn的Key"
+```
+
+### 2. Kimi Code 会员的「双重身份」
+Kimi Code（连续包年）是**独立体系**，与标准开放平台（platform.moonshot.cn）**Key 不通用**：
+
+| 场景 | 错误配置 | 正确配置 |
+|------|----------|----------|
+| **Claude Code** | `ANTHROPIC_BASE_URL=https://api.moonshot.cn/v1` | `ANTHROPIC_BASE_URL=https://api.kimi.com/coding/` |
+| **OpenClaw** | `baseUrl: "https://api.moonshot.cn/v1"`<br>`apiKey: "sk-kimi-..."` | `baseUrl: "https://api.kimi.com/coding/v1"`<br>`apiKey: "sk-kimi-..."` |
+| **模型名混淆** | `kimi-k2-turbo-preview` | **Code 会员专用**: `kimi-for-coding` 或 `kimi-k2-thinking-turbo` |
+
+### 3. 参数命名规范差异
+不同客户端对「大小写」和「下划线」要求不同：
+
+```python
+# OpenAI SDK 标准（Python）
+client = OpenAI(
+    api_key="sk-...",           # 小写下划线
+    base_url="https://api.moonshot.cn/v1"  # 下划线
+)
+
+# OpenClaw 配置（JSON）
+{
+  "baseUrl": "https://api.moonshot.cn/v1",  // 驼峰命名
+  "apiKey": "sk-...",                       // 驼峰命名
+  "api": "openai-completions"
+}
+
+# Claude Code 环境变量（Linux/macOS）
+export ANTHROPIC_BASE_URL="https://api.kimi.com/coding/"  # 下划线
+export ANTHROPIC_API_KEY="sk-kimi-..."                   # 下划线
+```
+
+---
+
+## 三、OpenClaw 配置速查（基于你的场景）
+
+如果你要在 **OpenClaw** 中使用 Kimi，需根据账户类型选择：
+
+### 场景 A：使用标准开放平台（按量付费/赠送 15 元额度）
+```json
+{
+  "models": {
+    "providers": {
+      "moonshot": {
+        "baseUrl": "https://api.moonshot.cn/v1",
+        "apiKey": "${MOONSHOT_API_KEY}",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "kimi-k2-turbo-preview",
+            "name": "Kimi K2 Turbo"
+          },
+          {
+            "id": "kimi-k2-thinking-turbo",
+            "name": "Kimi K2 Thinking Turbo"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+### 场景 B：使用 Kimi Code 包年会员（你当前的会员类型）
+```json
+{
+  "models": {
+    "providers": {
+      "kimi-code": {
+        "baseUrl": "https://api.kimi.com/coding/v1",
+        "apiKey": "${KIMICODE_API_KEY}",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "kimi-for-coding",
+            "name": "Kimi for Coding"
+          },
+          {
+            "id": "kimi-k2-thinking-turbo",
+            "name": "Kimi K2 Thinking Turbo"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**关键区别**：Code 会员的 `baseUrl` 必须是 `api.kimi.com/coding`，不能用 `api.moonshot.cn`。
+
+---
+
+## 四、快速排错清单（遇到 401 时检查）
+
+```bash
+# 1. 验证 Key 与端点是否匹配（替换为你的实际 Key）
+curl -s https://api.moonshot.cn/v1/models \
+  -H "Authorization: Bearer sk-你的Key"
+
+# 如果返回模型列表 → Key 有效且区域正确
+# 如果返回 401 → Key 被删除、区域错误或 Key 类型不匹配
+
+# 2. 检查环境变量是否生效（OpenClaw/Claude Code 场景）
+env | grep -E "(MOONSHOT|KIMI|ANTHROPIC)" | grep -v "grep"
+
+# 3. 确认模型名是否存在大小写错误
+# 错误：kimi-K2-turbo（K 大写）
+# 正确：kimi-k2-turbo-preview（全小写）
+```
+
+**你之前遇到的 401 错误**，很可能是在 OpenClaw 中误将 **Kimi Code 的 Key** 配置到了 **Moonshot 标准端点**（`api.moonshot.cn/v1`），或是误删了 Key 后未更新配置。
+
+
+
+#step003
+
+openclaw的配置文件地址是：
+
+```markdown
+- **macOS / Linux**: `~/.openclaw/config.json`
+- **Windows**: `%USERPROFILE%\.openclaw\config.json` (即 `C:\Users\你的用户名\.openclaw\config.json`)
+
+你可以通过以下命令快速定位或打开：
+```bash
+# macOS/Linux
+ls ~/.openclaw/config.json
+
+# Windows (PowerShell)
+ls $HOME\.openclaw\config.json
+```
+```
+#step004
+重新配置openclaw
+
+
+
+
+
+
+
+
+## 小Tips
+Antigravity自动换行切换键
+Option + Z
+
+# step005 
+如何在 Mac 上检查 OpenClaw 是否运行
+你可以通过查看进程列表来确认：
+
+Bash
+ps aux | grep openclaw
+如果除了你输入的这条命令外没有其他输出，说明程序根本没运行。
+
+momo@appledeMac-mini Moxiaoxia@TCM Museum % sudo systemctl status openclaw
+Password:
+sudo: systemctl: command not found
+momo@appledeMac-mini Moxiaoxia@TCM Museum % ps aux | grep openclaw
+momo             10360   0.0  0.1 444489456  24096 s009  S+   Tue02PM   0:02.35 openclaw-doctor   
+momo             10359   0.0  0.1 435870096  17184 s009  S+   Tue02PM   0:00.07 openclaw  
+momo              1658   0.0  0.0 435299504   1328 s018  S+   12:14AM   0:00.00 grep openclaw
+momo@appledeMac-mini Moxiaoxia@TCM Museum % 
+
+从上面看openclaw 已经在后台运行了。
+
+## 杀掉旧进程重新启动（最推荐）
+当前的进程可能卡在了某个报错循环中。我们先关掉它，然后在屏幕上直接看它的报错：
+
+终止现有进程：
+
+Bash
+killall openclaw

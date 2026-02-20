@@ -1,0 +1,87 @@
+---
+author: momo
+description: 配置 OpenClaw（前身是 Clawdbot/Moltbot）到 Discord 的过程确实有几个关键点容易让人困惑。  根据你提供的三张截图（安装页面、基本信息页面、OAuth2
+  页面），你的应用 `moxiaoxia` 已经创建成功。要完成配置，你需要按照以下三个核心步骤操作：  第一步：开...
+draft: false
+featured: false
+pubDatetime: 2026-02-20 00:00:00
+slug: discord-bot-pei-zhi-yao-dian
+tags: []
+title: discord bot 配置要点
+---
+
+配置 OpenClaw（前身是 Clawdbot/Moltbot）到 Discord 的过程确实有几个关键点容易让人困惑。
+
+根据你提供的三张截图（安装页面、基本信息页面、OAuth2 页面），你的应用 `moxiaoxia` 已经创建成功。要完成配置，你需要按照以下三个核心步骤操作：
+
+### 第一步：开启必要的“特权意图”（最重要）
+
+OpenClaw 需要读取消息才能回复，这在 Discord 中属于敏感权限。
+
+1. 在左侧菜单点击 **Bot (机器人)** 选项。
+2. 向下滚动找到 **Privileged Gateway Intents (特权网关意图)** 部分。
+3. **务必开启**以下开关（通常前两个是必须的）：
+* **Presence Intent**
+* **Server Members Intent**
+* **Message Content Intent**（**必选**：否则机器人看不到你发送的内容）。
+
+
+# momo实操血泪经验，一定先存一下，再去reset token
+
+4. 点击底部的 **Save Changes**。
+
+### 第二步：获取并配置 Bot Token
+
+这是连接 OpenClaw 程序的“钥匙”。
+
+1. 同样在 **Bot (机器人)** 页面。
+2. 找到 **Token** 部分，点击 **Reset Token**（如果你没保存过的话）。
+3. **复制** 生成的长字符串。
+4. **填入 OpenClaw：**
+* 如果你使用的是终端配置，在提示输入 Discord Token 时粘贴。
+* 如果你直接修改配置文件，它通常在 `~/.openclaw/openclaw.json` 中：
+```json
+"channels": {
+  "discord": {
+    "enabled": true,
+    "token": "你的TOKEN粘贴到这里"
+  }
+}
+
+```
+
+
+
+
+
+### 第三步：生成邀请链接（邀请机器人进服务器）
+
+你截图里的第三张图（OAuth2）就是做这个的。
+
+1. 在 **OAuth2** -> **URL Generator** 页面中：
+2. **Scopes (范围)** 勾选：
+* `bot`
+* `applications.commands`
+
+
+3. **Bot Permissions (机器人权限)** 勾选：
+* `Send Messages` (发送消息)
+* `Read Message History` (读取消息历史)
+* `View Channels` (查看频道)
+* *或者直接给 `Administrator` (管理员) 权限最省心。*
+
+
+4. 复制页面底部生成的 **Generated URL**，粘贴到浏览器打开。
+5. 选择你想让机器人加入的 Discord 服务器并授权。
+
+---
+
+### 验证是否成功
+
+1. 启动你的 OpenClaw 程序。
+2. 在 Discord 服务器中看 `moxiaoxia` 是否变为 **在线** 状态。
+3. 试着在频道里艾特它一下（例如 `@moxiaoxia 你好`），看它是否有反应。
+
+**提示：** 你的应用 ID (Application ID) 是 `1471161399043555470`，这在某些高级配置中可能会用到。
+
+你需要我帮你生成一段具体的 `openclaw.json` 配置文件模板吗？

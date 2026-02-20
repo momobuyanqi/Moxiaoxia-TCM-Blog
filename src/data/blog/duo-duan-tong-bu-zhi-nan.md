@@ -1,0 +1,57 @@
+---
+author: momo
+description: TCM 博物馆多端同步指南 (Multi-Device Sync Guide)  为了确保您的数据在多台设备间安全同步，请遵循“工作前拉取，工作后推送”的黄金法则。  核心流程
+  (The Golden Workflow)  1. 开始工作前 (Before You Start) -> PULL 在任...
+draft: false
+featured: false
+pubDatetime: 2026-02-20 00:00:00
+slug: duo-duan-tong-bu-zhi-nan
+tags: []
+title: 多端同步指南
+---
+
+# TCM 博物馆多端同步指南 (Multi-Device Sync Guide)
+
+为了确保您的数据在多台设备间安全同步，请遵循“工作前拉取，工作后推送”的黄金法则。
+
+## 核心流程 (The Golden Workflow)
+
+### 1. 开始工作前 (Before You Start) -> PULL
+在任何设备上开始写作或修改代码之前，**必须**先运行此命令，以确保您的本地内容是由于最新版本的。
+
+```bash
+git pull origin main
+```
+
+### 2. 进行工作 (Do Your Work)
+在此期间，您可以自由地：
+- 在 `TCM_Library` 中撰写笔记
+- 在 `TCM_Workshop` 中编写代码
+
+### 3. 工作结束后 (After You Finish) -> PUSH
+工作完成后，**必须**立即运行以下命令将更改保存到 GitHub 云端。
+
+```bash
+git add .
+git commit -m "更新内容: [在这里简短描述您的更改]"
+git push origin main
+```
+
+---
+
+## 常用命令速查表 (Cheat Sheet)
+
+| 动作 | 命令 | 说明 |
+| :--- | :--- | :--- |
+| **拉取最新内容** | `git pull` | **每天第一件事！** 同步云端最新版本到本地 |
+| **查看状态** | `git status` | 查看哪些文件发生了变化 |
+| **保存更改** | `git add .` | 将所有变化添加到暂存区 |
+| **提交更改** | `git commit -m "..."` | 将暂存区的变化确认为一个版本 |
+| **推送到云端** | `git push` | **每天最后一件事！** 上传本地版本到 GitHub |
+
+## 遇到冲突怎么办？ (Merge Conflicts)
+如果您忘记 Pull 就直接开始工作，可能会遇到“冲突”。Git 会提示您哪些文件存在冲突。
+1. 打开冲突文件，找到 `<<<<<<< HEAD` 和 `>>>>>>>` 标记。
+2. 手动决定保留哪部分内容。
+3. 保存文件。
+4. 再次运行 `git add .`, `git commit`, `git push`。
