@@ -1,4 +1,12 @@
+# 🏔️ TCM Museum Blog (tcm-blog)
+
+> **“让思想在数字世界留下可见的痕迹。”**
+> 本项目是“洞穴博物馆”的传播枢纽。通过此博客，我们将藏书阁（Library）中的深度思考与实践记录，转化为对外展示的数字媒介资产。
+
+---
+
 # AstroPaper 📄
+
 
 ![AstroPaper](public/astropaper-og.jpg)
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/community/file/1356898632249991861)

@@ -1,13 +1,18 @@
 ---
 author: momo
-description: '```markdown 洞穴虾类分类简介  洞穴虾类（Cave Shrimps）主要属于十足目（Decapoda），根据其对洞穴环境的适应程度和分类学特征，通常可以从以下两个维度进行分类：  1.
-  按生态习性分类 (Ecological Classification) 根据虾类对洞穴环境的依赖程度，...'
-draft: false
-featured: false
-pubDatetime: 2026-02-20 00:00:00
-slug: moxiaoxia-openclawan-zhuang-bi-ji
+created: &id001 2026-02-10 12:31:06+08:00
+description: '```markdown   洞穴虾类（Cave Shrimps）主要属于十足目（Decapoda），根据其对洞穴环境的适应程度和分类学特征，通常可以从以下两个维度进行分类：   根据虾类对洞穴环境的依赖程度，生物学家将其分为三类：  *   **真洞穴生物
+  (Troglobites):** 终生生活在洞穴深处的黑暗环境...'
+id: 202602101231
+pubDatetime: *id001
+publish:
+- garden
+- blog
+- xhs
+- wx
 tags: []
 title: moxiaoxia openclaw安装笔记
+updated: 2026-02-20 12:44:13+08:00
 ---
 
 ```markdown
@@ -262,3 +267,5 @@ Discord tokey
 
 
 Agent can plan before executing tasks. Use for deep research, complex tasks, or collaborative work
+
+#museum

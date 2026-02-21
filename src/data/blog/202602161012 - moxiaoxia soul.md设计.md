@@ -1,13 +1,18 @@
 ---
 author: momo
-description: "\U0001F4DC “洞穴博物馆”对话记录梳理 (Q&A Mode)  **Q1 (momo):** 我用的是mac，如何查看openclaw是否启动。
-  \ **A1 (Gemini):** 在 macOS 上确认 **OpenClaw**（通常是《爪子船长》的开源重制版）是否正在运行，主要有几种直观的方法。  你可..."
-draft: false
-featured: false
-pubDatetime: 2026-02-20 00:00:00
-slug: moxiaoxia-soul-mdshe-ji
+created: &id001 2026-02-16 10:12:43+08:00
+description: '**Q1 (momo):** 我用的是mac，如何查看openclaw是否启动。  **A1 (Gemini):** 在 macOS 上确认
+  **OpenClaw**（通常是《爪子船长》的开源重制版）是否正在运行，主要有几种直观的方法。  你可以根据它是处于“活跃运行中”还是“后台进程”来选择查看方式：    这是最准...'
+id: 202602161012
+pubDatetime: *id001
+publish:
+- garden
+- blog
+- xhs
+- wx
 tags: []
 title: moxiaoxia soul.md设计
+updated: 2026-02-20 12:44:13+08:00
 ---
 
 # 📜 “洞穴博物馆”对话记录梳理 (Q&A Mode)
@@ -263,3 +268,5 @@ title: moxiaoxia soul.md设计
 这份文档现在已经整理完毕。如果你需要将其导出或进行进一步的复盘分析，请随时告诉我。
 
 **你想让我针对“mo小虾”的某个具体职责（比如小红书文案风格）再进行细化演示吗？**
+
+#museum
